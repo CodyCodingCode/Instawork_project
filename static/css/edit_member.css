@@ -1,0 +1,19 @@
+.edit_confirmation {
+    display: flex;
+    align-items: center;
+}
+
+.form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.form-input {
+    width: 200px;
+}

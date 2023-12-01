@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Member List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/member_list.css'%}">
+</head>
+<body>
+<div class="team_member_card">
+    <h2>Team Member List</h2>
+    <a href="{% url 'team_member_create' %}">
+        <img src='{% static "images/add_sign.png"%}' alt="add_sign" class="static_images">
+    </a>
+</div>
+<p>You Have {{ team_members.count }} Team Members.</p>
+<ul>
+    {% for member in team_members %}
+
+    <a href="{% url 'team_member_edit' pk=member.pk %}">
+        <div class="team_member_card">
+
+            <img src='{% static "images/empty_profile_pic.png" %}' alt="User Image" class="static_images">
+            <div>
+                {{ member.first_name }} {{ member.last_name }}
+                {% if member.is_admin %}(Admin){% endif %}
+                <br>
+                Phone: {{ member.phone_number }}
+                <br>
+                Email: {{ member.email }}
+            </div>
+        </div>
+    </a>
+
+    {% endfor %}
+</ul>
+</body>
+</html>

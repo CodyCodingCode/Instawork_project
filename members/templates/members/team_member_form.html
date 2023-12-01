@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Edit Team Member{% else %}Add Team Member{% endif %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/edit_member.css'%}">
+</head>
+<body>
+    <h2>Add a team member</h2>
+    <p>Set email, location, and role</p>
+    <h3>Info</h3>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-field">
+        <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name:</label>
+        {{ form.first_name }}
+    </div>
+
+    <div class="form-field">
+        <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name:</label>
+        {{ form.last_name }}
+    </div>
+
+    <div class="form-field">
+        <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number:</label>
+        {{ form.phone_number }}
+    </div>
+
+    <div class="form-field">
+        <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+        {{ form.email }}
+    </div>
+
+    <div class="form-field">
+        <label for="{{ form.role.id_for_label }}" class="form-label">Role:</label>
+        {{ form.role }}
+    </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <br>
+<!--    {% if form.instance.pk %}-->
+<!--        <form method="post" action="{% url 'team_member_delete' pk=form.instance.pk %}">-->
+<!--            {% csrf_token %}-->
+<!--            <button type="submit" onclick="return confirm('Are you sure you want to delete this team member?')">Delete</button>-->
+<!--        </form>-->
+<!--    {% endif %}-->
+    <a href="{% url 'team_member_list' %}">Back to Team Member List</a>
+</body>
+</html>
